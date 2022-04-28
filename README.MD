@@ -7,6 +7,7 @@
 
 ## To run the locust
 
+
 - In vs code terminal you need to run `locust -f <filename with extension .py>`
 - In your browser enter `http://localhost:8089/`
 - You need to enter number of users you want to run
