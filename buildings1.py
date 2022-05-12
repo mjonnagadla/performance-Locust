@@ -9,19 +9,15 @@ auth_header = {
 class Building(TaskSet):
     
     @task(1)
-    def get_buildingId(self):
-        
-        #passsing ID's from CSV file
-        file_handle=open("buildings.csv","r")
-        for i in file_handle:
-            response = self.client.request(
+    def get_buildings(self):
+        response = self.client.request(
             method='GET',
-            url='/pw/api/rest/v1/buildings/%i' %int(i),
+            url='/pw/api/rest/v1/buildings',
             headers=auth_header
         )
-        print("Buildingid",response,i)
+        print("Buildings fetched",response)
 
 class LoggedInUser(HttpUser):
     host = "https://sat.propertyware.com"
     tasks = [Building]
-    wait_time = constant(2)
+    wait_time = constant(1)
