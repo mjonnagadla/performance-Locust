@@ -10,10 +10,10 @@ class Building(TaskSet):
     
     @task(1)
     def get_buildingId(self):
-        file_handle=open("buildings.csv","r")
         
+        #passsing ID's from CSV file
+        file_handle=open("buildings.csv","r")
         for i in file_handle:
-            #i=(int(i))
             response = self.client.request(
             method='GET',
             url='/pw/api/rest/v1/buildings/%i' %int(i),
