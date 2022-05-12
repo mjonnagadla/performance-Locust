@@ -5,18 +5,16 @@ auth_header = {
     'x-propertyware-client-id': '0af3cd28-fec2-4db0-87fb-26fa10b3671e',
     'x-propertyware-client-secret': 'b033363a-f97f-4957-9839-9eb5c28ed9ff'
     }
+list=[2805006336,2804908036,2419228677]
 
 class Building(TaskSet):
     
     @task(1)
     def get_buildingId(self):
-        file_handle=open("buildings.csv","r")
-        
-        for i in file_handle:
-            #i=(int(i))
+        for i in list:
             response = self.client.request(
             method='GET',
-            url='/pw/api/rest/v1/buildings/%i' %int(i),
+            url='/pw/api/rest/v1/buildings/%i' %i,
             headers=auth_header
         )
         print("Buildingid",response,i)
